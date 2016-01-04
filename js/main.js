@@ -19,6 +19,7 @@ function loadOptions() {
     var $dateforeground = $('#dateforeground');
     var $datetimeout = $('#datetimeout');
     var $dateenabled = $('#dateenabled');
+    var $fonttype = $('#fonttype');
 
     if (localStorage.timebackground) {
         $timebackground[0].value = localStorage.timebackground;
@@ -27,6 +28,7 @@ function loadOptions() {
         $dateforeground[0].value = localStorage.dateforeground;
         $datetimeout[0].value = localStorage.datetimeout;
         $dateenabled[0].checked = localStorage.dateenabled === 'false'; // See comment below.
+        $fonttype[0].value = localStorage.fonttype;
     }
 }
 
@@ -37,6 +39,7 @@ function getAndStoreConfigData() {
     var $dateforeground = $('#dateforeground');
     var $datetimeout = $('#datetimeout');
     var $dateenabled = $('#dateenabled');
+    var $fonttype = $('#fonttype');
 
     // The C function that checks for a stored boolean will return false if not set. Since we
     // want to display the date by default we need to negate the checked value of dateenabled
@@ -47,7 +50,8 @@ function getAndStoreConfigData() {
         datebackground: $datebackground.val(),
         dateforeground: $dateforeground.val(),
         datetimeout: $datetimeout.val(),
-        dateenabled: !$dateenabled[0].checked
+        dateenabled: !$dateenabled[0].checked,
+        fonttype: $fonttype.val()
     };
 
     localStorage.timebackground = options.timebackground;
@@ -56,6 +60,7 @@ function getAndStoreConfigData() {
     localStorage.dateforeground = options.dateforeground;
     localStorage.datetimeout = options.datetimeout;
     localStorage.dateenabled = options.dateenabled;
+    localStorage.fonttype = options.fonttype;
 
     return options;
 }
